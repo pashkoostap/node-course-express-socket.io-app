@@ -10,6 +10,15 @@
 
 <body>
   <h2>Hello world</h2>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    let socket = io();
+
+    socket.on('connect', () => { 
+      console.log('connected');
+    })
+  </script>
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 let socket = io();
 let form = document.getElementById('message-form');
-let inputField = form.querySelector('.form-control');
+let inputField = form.querySelector('input');
 let messagesList = document.querySelector('.messages-list');
 
 socket.on('connect', () => {

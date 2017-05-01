@@ -14,7 +14,9 @@ socket.on('disconnect', () => {
 socket.on('newMessage', (message) => {
   console.log('newMessage', message);
   let newElement = document.createElement('li');
-  newElement.innerText = `${message.from}: ${message.text}`;
+  let sentDate = new Date(message.createdAt);
+  let sentAt = `<b>Sent: ${sentDate.toLocaleDateString()} ${sentDate.toString().slice(16,24)}</b>`;
+  newElement.innerHTML = `${message.from}: ${message.text}. ${sentAt}`;
   messagesList.appendChild(newElement);
 });
 

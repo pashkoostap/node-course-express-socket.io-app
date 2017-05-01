@@ -10,6 +10,9 @@ body {
   font-family: Arial;
   height: 100vh;
 }
+body.join-page {
+  background-color: rgba(29, 72, 178, 0.5);
+}
 ul {
   list-style: none;
   padding: 0;
@@ -49,6 +52,8 @@ ul {
   border: none;
   height: 40px;
   padding: 0px 15px;
+  border-radius: 3px;
+  border-width: 0px;
 }
 #message-form  button {
   margin-left: 15px;
@@ -57,10 +62,53 @@ ul {
   cursor: pointer;
   flex-shrink: 0;
   width: 100px;
+  border-radius: 3px;
+  color: #fff;
+  transition: opacity 0.3s ease;
+}
+#message-form  button:hover {
+  opacity: 0.7;
 }
 .messages-list {
   padding: 15px;
 }
 .messages-list li {
   margin-bottom: 10px;
+}
+.join-form {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.5);
+  max-width: 280px;
+  width: 100%;
+  padding: 15px;
+  margin: auto;
+  border-radius: 5px;
+}
+.join-form h3 {
+  margin: 10px;
+  text-align: center;
+}
+.join-form label {
+  margin: 10px 0px;
+}
+.join-form input {
+  height: 40px;
+  padding: 0px 15px;
+  border-radius: 2px;
+  border-width: 0px;
+}
+.join-form button {
+  height: 40px;
+  margin-top: 15px;
+  background: rgba(29, 72, 178, 0.5);
+  color: #fff;
+  font-size: 16px;
+  border-radius: 2px;
+  border-width: 0px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+.join-form button:hover {
+  opacity: 0.7;
 }

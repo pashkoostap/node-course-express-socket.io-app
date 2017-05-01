@@ -6,24 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Express-socket.io-chat</title>
-  <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
+
 </head>
 
-<body>
-  <div class="users">
-    <h2>Users</h2>
-  </div>
-  <div class="chat">
-    <h2>Chat application</h2>
-    <ul class="messages-list"></ul>
-    <form id="message-form">
-      <input type="text" placeholder="Type message">
-      <button type="submit" id="send-message">Send</button>
-    </form>
-  </div>
-
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="/js/index.js"></script>
+<body class="join-page">
+  <form action="/chat.html" class="join-form">
+    <h3>Join to chat</h3>
+    <label for="username">Your name</label>
+    <input type="text" id="username">
+    <label for="chat-room">Chat room</label>
+    <input type="text" id="chat-room">
+    <button type="submit">Join</button>
+  </form>
 </body>
 
 </html>

@@ -2,6 +2,7 @@ let socket = io();
 let form = document.getElementById('message-form');
 let inputField = form.querySelector('input');
 let messagesList = document.querySelector('.messages-list');
+let userList = document.querySelector('.users-list');
 
 socket.on('connect', () => {
   console.info('connected');
@@ -22,6 +23,16 @@ socket.on('connect', () => {
 socket.on('disconnect', () => {
   console.info('disconnected');
 });
+
+socket.on('updateUserList', (users) => {
+  let usersArr = [...users];
+  userList.innerHTML = '';
+  usersArr.forEach(user => {
+    let userEl = document.createElement('li');
+    userEl.innerText = user;
+    userList.appendChild(userEl);
+  })
+})
 
 socket.on('newMessage', (message) => {
   console.log('newMessage', message);

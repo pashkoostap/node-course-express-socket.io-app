@@ -48,7 +48,6 @@ form.addEventListener('submit', (e) => {
   let messageText = inputField.value;
   if (messageText) {
     socket.emit('createMessage', {
-      from: 'User',
       text: messageText
     }, (data) => {
       console.log('Got it', data);
@@ -56,6 +55,7 @@ form.addEventListener('submit', (e) => {
     inputField.value = '';
   }
 })
+
 function parseQueryString() {
   var query = (window.location.search || '?').substr(1),
     map = {};

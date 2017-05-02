@@ -5,6 +5,18 @@ let messagesList = document.querySelector('.messages-list');
 
 socket.on('connect', () => {
   console.info('connected');
+  let params = parseQueryString();
+  let userName = params['username'][0] || '';
+  let chatRoom = params['chat-room'][0] || '';
+
+  socket.emit('join', { userName, chatRoom }, (err) => {
+    if (err) {
+      alert(err);
+      window.location.href = '/';
+    } else {
+      console.log('No errors');
+    }
+  })
 });
 
 socket.on('disconnect', () => {
@@ -15,7 +27,7 @@ socket.on('newMessage', (message) => {
   console.log('newMessage', message);
   let newElement = document.createElement('li');
   let sentDate = new Date(message.createdAt);
-  let sentAt = `<b>Sent: ${sentDate.toLocaleDateString()} ${sentDate.toString().slice(16,24)}</b>`;
+  let sentAt = `<b>Sent: ${sentDate.toLocaleDateString()} ${sentDate.toString().slice(16, 24)}</b>`;
   newElement.innerHTML = `${message.from}: ${message.text}. ${sentAt}`;
   messagesList.appendChild(newElement);
 });
@@ -33,3 +45,11 @@ form.addEventListener('submit', (e) => {
     inputField.value = '';
   }
 })
+function parseQueryString() {
+  var query = (window.location.search || '?').substr(1),
+    map = {};
+  query.replace(/([^&=]+)=?([^&]*)(?:&+|$)/g, function (match, key, value) {
+    (map[key] = map[key] || []).push(value);
+  });
+  return map;
+}
